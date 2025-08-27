@@ -1,0 +1,43 @@
+.dialog-header {
+  background-color: #151c28;
+  color: white;
+  width: 100%;
+}
+
+.dialog-body {
+  background-color: #234;
+  color: white;
+}
+
+.reset-btn {
+  background-color: #0284c7;
+}
+
+.column {
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.col-1-bg {
+  background-color: rgba(255, 0, 0, 0.15); /* light red */
+}
+
+.col-2-bg {
+  background-color: rgba(0, 255, 0, 0.15); /* light green */
+}
+
+.col-3-bg {
+  background-color: rgba(0, 0, 255, 0.15); /* light blue */
+}
+
+.custom-switch:checked {
+  background-color: #198754 !important;
+  border-color: #198754 !important;
+}
+
+.custom-switch {
+  cursor: pointer;
+}
+.toggle-col {
+  background-color: #1f2a3d;
+}

@@ -1,0 +1,138 @@
+<div *ngIf="showHeader">
+  <div class="col-12">
+    <div class="main__body__wrap left__right__space p-0">
+      <div class="live__heightlight mb-3 mt-3 p-0 pt-2">
+        <div class="height__table">
+          <div class="container-fluid py-3">
+            <div class="row align-items-center mb-3">
+              <div class="col-md-3 col-12 mb-2 mb-md-0">
+                <input type="text" class="form-control select_period" placeholder="Select Period" />
+              </div>
+              <div class="col-md-3 col-12 mb-2 mb-md-0 d-flex align-items-center gap-3">
+                <button class="btn btn-primary flex-shrink-0 export_button">Export</button>
+                <div class="form-check form-switch d-flex align-items-center mb-0 flex-shrink-0">
+                  <input class="form-check-input toggle-lg" type="checkbox" id="utcSwitch" />
+                  <label class="form-check-label ms-2 mb-0 text-white" for="utcSwitch">UTC</label>
+                </div>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-12">
+                <div
+                  class=" rounded d-flex align-items-center justify-content-center chart_statement"
+                  style="height: 200px"
+                ></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="row g-2 text-white text-center rounded-top stats-row">
+                <div class="col-6 col-md p-3">
+                  <div class="fw-medium fs-5 fs-md-3">0.00$</div>
+                  <div class="fs-6 fs-md-5">Potential P/L</div>
+                </div>
+                <div class="col-6 col-md p-3">
+                  <div class="fw-medium fs-5 fs-md-3">0.00$</div>
+                  <div class="fs-6 fs-md-5">Requested stake</div>
+                </div>
+                <div class="col-6 col-md p-3">
+                  <div class="fw-medium fs-5 fs-md-3">0.00$</div>
+                  <div class="fs-6 fs-md-5">Confirmed stake</div>
+                </div>
+                <div class="col-6 col-md p-3">
+                  <div class="fw-medium fs-5 fs-md-3">0.000</div>
+                  <div class="fs-6 fs-md-5">Highest odds</div>
+                </div>
+                <div class="col-6 col-md p-3">
+                  <div class="fw-medium fs-5 fs-md-3">0.000</div>
+                  <div class="fs-6 fs-md-5">Lowest odds</div>
+                </div>
+              </div>
+
+              <div class="table__wrap d-flex justify-content-center overflow-auto pt-4">
+                <div class="table__inner w-100">
+                  <div
+                    class="table__header order_table_header border-bottom border-top d-flex flex-wrap justify-content-between px-2 px-md-4 py-2 fw-bold text-white"
+                  >
+                    <span class="flex-fill text-center small text-md-base">Details</span>
+                    <span class="flex-fill text-center small text-md-base">Placed</span>
+                    <span class="flex-fill text-center small text-md-base">Event start</span>
+                    <span class="flex-fill text-center small text-md-base">Event</span>
+                    <span class="flex-fill text-center small text-md-base">Selection</span>
+                    <span class="flex-fill text-center small text-md-base">Status</span>
+                    <span class="flex-fill text-center small text-md-base">Requested $</span>
+                    <span class="flex-fill text-center small text-md-base">Confirmed $</span>
+                  </div>
+
+                  <div
+                    class="table__row order_table_row d-flex justify-content-center align-items-center py-4"
+                  >
+                    <span class="fst-italic text-white small">Nothing here</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!showHeader">
+  <div class="col-12">
+    <div class="main__body__wrap left__right__space p-0">
+      <div class="live__heightlight mb-3 mt-3 p-0 pt-5">
+        <div class="height__table">
+          <div>
+            <div class="row g-2 text-white text-center rounded-top stats-row">
+              <div class="col-6 col-md p-3">
+                <div class="fw-medium fs-5 fs-md-3">0.00$</div>
+                <div class="fs-6 fs-md-5">Potential P/L</div>
+              </div>
+              <div class="col-6 col-md p-3">
+                <div class="fw-medium fs-5 fs-md-3">0.00$</div>
+                <div class="fs-6 fs-md-5">Requested stake</div>
+              </div>
+              <div class="col-6 col-md p-3">
+                <div class="fw-medium fs-5 fs-md-3">0.00$</div>
+                <div class="fs-6 fs-md-5">Confirmed stake</div>
+              </div>
+              <div class="col-6 col-md p-3">
+                <div class="fw-medium fs-5 fs-md-3">0.000</div>
+                <div class="fs-6 fs-md-5">Highest odds</div>
+              </div>
+              <div class="col-6 col-md p-3">
+                <div class="fw-medium fs-5 fs-md-3">0.000</div>
+                <div class="fs-6 fs-md-5">Lowest odds</div>
+              </div>
+            </div>
+
+            <div class="table__wrap d-flex justify-content-center overflow-auto pt-4">
+              <div class="table__inner w-100">
+                <div
+                  class="table__header order_table_header border-bottom border-top d-flex flex-wrap justify-content-between px-2 px-md-4 py-2 fw-bold text-white"
+                >
+                  <span class="flex-fill text-center small text-md-base">Details</span>
+                  <span class="flex-fill text-center small text-md-base">Placed</span>
+                  <span class="flex-fill text-center small text-md-base">Event start</span>
+                  <span class="flex-fill text-center small text-md-base">Event</span>
+                  <span class="flex-fill text-center small text-md-base">Selection</span>
+                  <span class="flex-fill text-center small text-md-base">Status</span>
+                  <span class="flex-fill text-center small text-md-base">Requested $</span>
+                  <span class="flex-fill text-center small text-md-base">Confirmed $</span>
+                </div>
+
+                <div
+                  class="table__row order_table_row d-flex justify-content-center align-items-center py-4"
+                >
+                  <span class="fst-italic text-white small">Nothing here</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

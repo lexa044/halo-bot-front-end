@@ -1,0 +1,30 @@
+.order_table_header {
+  background-color: #253550;
+}
+.order_table_row {
+  background-color: #1a2333;
+}
+.toggle-lg {
+  width: 3rem;
+  height: 1.5rem;
+}
+
+.toggle-lg:checked {
+  background-color: #0d6efd;
+}
+
+.toggle-lg::before {
+  width: 1.3rem;
+  height: 1.3rem;
+  left: 0.1rem;
+  top: 0.1rem;
+}
+.chart_statement,
+.select_period {
+  background-color: #10151e;
+  border: none;
+}
+.export_button {
+  background-color: #0284c7;
+  border: none;
+}

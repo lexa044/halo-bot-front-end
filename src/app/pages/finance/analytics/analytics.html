@@ -1,0 +1,78 @@
+<div class="col-12">
+    <div class="px-3 py-2 pt-3">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item active text-white fw-bold fst-italic mb-1">Finance > Analytics</li>
+      </ol>
+    </nav>
+  </div>
+  <div class="main__body__wrap">
+    <div class="live__heightlight">
+      <div class="d-flex justify-content-between align-items-center px-3">
+        <button class="btn btn-sm filter-btn">
+          <i class="fa fa-filter"></i>
+        </button>
+
+        <div class="flex-grow-1 d-flex justify-content-center">
+          <div class="btn-group">
+            <button
+              class="btn btn-sm toggle-btn"
+              [ngClass]="{ active: activeTab === 'roi' }"
+              (click)="setActiveTab('roi')"
+            >
+              ROI
+            </button>
+            <button
+              class="btn btn-sm toggle-btn"
+              [ngClass]="{ active: activeTab === 'money' }"
+              (click)="setActiveTab('money')"
+            >
+              Money
+            </button>
+            <button
+              class="btn btn-sm toggle-btn"
+              [ngClass]="{ active: activeTab === 'hide' }"
+              (click)="setActiveTab('hide')"
+            >
+              Hide chart
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chart__wrap" *ngIf="activeTab !== 'hide'" [@fadeInOut]>
+        <div class="d-flex justify-content-center">
+          @if (activeTab === 'roi') {
+          <span class="badge legend-badge bg-pink me-2">Number of bets</span>
+          <span class="badge legend-badge bg-green">ROI %</span>
+          } @if (activeTab === 'money') {
+          <span class="badge legend-badge bg-pink me-2">Number of bets</span>
+          <span class="badge legend-badge bg-green me-2">Commission volume</span>
+          <span class="badge legend-badge bg-yellow me-2">Turnover</span>
+          <span class="badge legend-badge bg-blue">Profit/loss</span>
+          }
+        </div>
+        <div class="chart-box text-center text-secondary">
+          <hr class="border-secondary" />
+        </div>
+      </div>
+    </div>
+
+    <div class="table__wrap overflow-auto">
+      <div class="table__inner">
+        <div class="table__header d-flex px-3 py-2 fw-bold text-center">
+          <span class="flex-fill text-start header-group">Group</span>
+          <span class="flex-fill">No. bets</span>
+          <span class="flex-fill">Turn $</span>
+          <span class="flex-fill">Comm. v $</span>
+          <span class="flex-fill">P/L $</span>
+          <span class="flex-fill">ROI %</span>
+        </div>
+
+        <div class="table__row d-flex align-items-center py-3 text-center">
+          <span class="flex-fill fst-italic">Nothing here</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

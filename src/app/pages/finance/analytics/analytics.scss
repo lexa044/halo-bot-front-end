@@ -1,0 +1,77 @@
+.main__body__wrap {
+  background: #1e2a38;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.live__heightlight {
+  background-color: transparent;
+  margin: 1rem 0;
+  padding-top: 1rem;
+}
+
+.filter-btn {
+  background: #243447;
+  color: #58A6FF;
+  border: none;
+}
+
+.toggle-btn {
+  background: #111927;
+  color: #fff;
+  border: 1px solid #333;
+  transition: 0.2s ease-in-out;
+}
+
+.toggle-btn.active {
+  color: #FF9900;
+  border-color: #FF9900;
+}
+
+.chart__wrap {
+  background: #0b1621;
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.chart-box {
+  height: 200px;
+}
+
+.legend-badge {
+  padding: 0.4rem 0.6rem;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  color: #000;
+}
+
+.bg-pink {
+  background: #ff8ba0;
+}
+.bg-green {
+  background: #70f7c5;
+}
+.bg-yellow {
+  background: #f9e07f;
+}
+.bg-blue {
+  background: #5dbbff;
+}
+
+.table__header {
+  background: #0e1621;
+  color: #fff;
+  border-bottom: 1px solid #2c3a47;
+}
+
+.table__header .header-group {
+  color: #ff9900;
+}
+
+.table__row {
+  background: #16222e;
+  color: #9ca3af;
+  border-bottom: 1px solid #2c3a47;
+}

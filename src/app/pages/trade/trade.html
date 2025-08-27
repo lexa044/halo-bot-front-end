@@ -1,0 +1,371 @@
+<!-- <ngx-spinner
+  bdColor="rgba(51, 51, 51, 0.8)"
+  size="large"
+  color="#934d4d"
+  type="ball-8bits"
+></ngx-spinner> -->
+
+<section class="dashboard__body mt__30 pb-60">
+  <div class="p-3">
+    <div class="row g-1">
+      <div class="col-12 col-lg-3 order-2 order-lg-1">
+        <button
+          class="btn text-white d-flex align-items-center gap-2 absolute top-2 end-0 z-30 mb-2"
+          (click)="sidebarCollapsed = !sidebarCollapsed"
+        >
+          <i class="fas" [ngClass]="sidebarCollapsed ? 'fa-chevron-right' : 'fa-chevron-left'"></i>
+          <span>Events</span>
+        </button>
+        <div
+          class="dashboard__side__bar relative transition-all duration-300"
+          [ngClass]="sidebarCollapsed ? 'invisible' : ''"
+        >
+          <div class="overflow-hidden transition-all duration-300 p-3">
+            <div
+              class="mb-3 d-flex align-items-center"
+              [ngClass]="sidebarCollapsed ? 'justify-center' : ''"
+            >
+              <label for="search" class="me-2 text-white" *ngIf="!sidebarCollapsed">
+                <i class="fas fa-search fa-lg"></i>
+              </label>
+              <input
+                type="text"
+                id="search"
+                name="search"
+                class="form-control text-white border-0 rounded-1 searchEvents"
+                [ngClass]="sidebarCollapsed ? 'd-none' : ''"
+              />
+            </div>
+
+            <div
+              class="mb-3 d-flex align-items-center"
+              [ngClass]="sidebarCollapsed ? 'justify-center' : ''"
+            >
+              <label for="hours" class="me-2 text-white" *ngIf="!sidebarCollapsed">
+                <i class="far fa-clock fa-lg"></i>
+              </label>
+
+              <select
+                id="hours"
+                name="hours"
+                class="form-control text-white border-0 rounded-1 searchEvents"
+                [ngClass]="sidebarCollapsed ? 'd-none' : ''"
+              >
+                <option value="1">1 Hour</option>
+                <option value="2">2 Hours</option>
+                <option value="3">3 Hours</option>
+                <option value="6">6 Hours</option>
+                <option value="12">12 Hours</option>
+                <option value="24">24 Hours</option>
+                <option value="48">48 Hours</option>
+                <option value="all">All</option>
+              </select>
+            </div>
+
+            <div
+              class="sidebar text-white p-2 rounded overflow-hidden"
+              [ngClass]="sidebarCollapsed ? 'w-0 p-0 opacity-0' : 'w-full opacity-100'"
+            >
+              <h6
+                class="text-uppercase d-flex align-items-center mt-2 mb-2"
+                *ngIf="!sidebarCollapsed"
+              >
+                <i class="fas fa-bolt text-warning me-2"></i> Highlights
+              </h6>
+              <ul class="list-unstyled ps-2 mb-3" *ngIf="!sidebarCollapsed">
+                <ng-container *ngFor="let sport of sports">
+                  <ng-container *ngFor="let league of sport.leagues">
+                    <li *ngIf="league.isHighlighted" class="d-flex align-items-center mb-1">
+                      <i class="far fa-star me-2"></i>
+                      {{ league.name }}
+                      <span class="text-danger ms-1">•</span>
+                    </li>
+                  </ng-container>
+                </ng-container>
+              </ul>
+
+              <hr class="border-secondary" *ngIf="!sidebarCollapsed" />
+
+              <h6
+                class="text-uppercase d-flex align-items-center mt-3 mb-2"
+                *ngIf="!sidebarCollapsed"
+              >
+                <i class="fas fa-basketball-ball text-warning me-2"></i> Sports
+              </h6>
+              <ul class="list-unstyled ps-2 mb-2" *ngIf="!sidebarCollapsed">
+                <li *ngFor="let sport of sports" class="d-flex align-items-center mb-1">
+                  <i [class]="sport.icon + ' me-2'"></i>
+                  {{ sport.name }}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-6 order-1 order-lg-2">
+        <div class="dashboard__body__wrap">
+          <div class="main__body__wrap left__right__space">
+            <div class="live__heightlight">
+              <div class="height__table">
+                <div class="main__table">
+                  <div class="section__head b__bottom">
+                    <div class="d-flex align-items-center flex-wrap gap-3">
+                      <div class="form-check form-switch d-flex align-items-center">
+                        <input
+                          class="form-check-input toggle-lg toggle-custom"
+                          type="checkbox"
+                          id="parlay"
+                          [(ngModel)]="parlay"
+                        />
+                        <label class="form-check-label ms-2 text-white" for="parlay">Parlay</label>
+                      </div>
+                      <div class="form-check form-switch d-flex align-items-center">
+                        <input
+                          class="form-check-input toggle-lg toggle-custom"
+                          type="checkbox"
+                          id="outright"
+                          [(ngModel)]="outright"
+                        />
+                        <label class="form-check-label ms-2 text-white" for="outright"
+                          >Outright</label
+                        >
+                      </div>
+                      <div class="form-check form-switch d-flex align-items-center">
+                        <input
+                          class="form-check-input toggle-lg toggle-custom"
+                          type="checkbox"
+                          id="favorites"
+                          [(ngModel)]="favorites"
+                        />
+                        <label class="form-check-label ms-2 text-white" for="favorites"
+                          >Favorites</label
+                        >
+                      </div>
+                      <div class="form-check form-switch d-flex align-items-center">
+                        <input
+                          class="form-check-input toggle-lg toggle-custom"
+                          type="checkbox"
+                          id="sortByEvent"
+                          [(ngModel)]="sortByEvent"
+                        />
+                        <label class="form-check-label ms-2 text-white" for="sortByEvent"
+                          >Sort by event start</label
+                        >
+                      </div>
+                      <sticky-modal> </sticky-modal>
+                    </div>
+                  </div>
+                  <div class="table__wrap">
+                    <div class="table__items b__bottom">
+                      <div class="t__items">
+                        <div class="t__items__left">
+                          <h6>FK Septemvri Sofia</h6>
+                          <span class="text"> PFC CteSKA Sofia </span>
+                          <p>
+                            <a href="#0"> Live </a>
+                            <span> 2H 45:34 </span>
+                          </p>
+                        </div>
+                      </div>
+                      <div class="cart__point">
+                        <span> 0 </span>
+                        <span> 0 </span>
+                      </div>
+                      <div class="mart__point__items">
+                        <a href="#0" class="twing twing__right">
+                          <i class="icon-twer"></i>
+                        </a>
+                        <a href="#0" class="mart">
+                          <i class="icon-pmart"></i>
+                        </a>
+                        <a href="#0box" class="point__box"> 8.55 </a>
+                        <a href="#0box" class="point__box"> 2.70 </a>
+                        <a href="#0box" class="point__box"> 8.50 </a>
+                      </div>
+                      <div class="cart__point cart__point__two">2,6</div>
+                      <div class="mart__point__two">
+                        <div class="mart__point__left">
+                          <a href="#box" class="point__box"> 8.55 </a>
+                          <a href="#box" class="point__box"> 2.70 </a>
+                        </div>
+                        <div class="mart__point__right">
+                          <a href="#0" class="point__box bg__none">
+                            <i class="icon-lock"></i>
+                          </a>
+                          <a href="#0" class="point__box bg__none">
+                            <i class="icon-star star"></i>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="table__footer">
+                      <a href="#0" class="lobby"> Open Football lobby </a>
+                      <a href="#0" class="footerpoing">
+                        <span>322</span>
+                        <span><i class="fas fa-angle-right"></i></span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-3 order-3 order-lg-3">
+        <button
+          class="btn text-white d-flex align-items-center gap-2 absolute top-2 end-0 z-30 mb-2"
+        >
+          <i class="fas" [ngClass]="'fa-chevron-right'"></i>
+          <span>Info</span>
+        </button>
+        <div class="dashboard__side__bar right_dashboard p-0">
+          <div class="sidebar">
+            <div class="accordion" id="accordionExample">
+              <div class="accordion-item custom-card mb-2">
+                <h2 class="accordion-header" id="headingTwo">
+                  <button
+                    class="accordion-button collapsed pt-2 ps-2 pb-1 custom-header"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseTwo"
+                    aria-expanded="false"
+                    aria-controls="collapseTwo"
+                  >
+                    Site status
+                  </button>
+                </h2>
+                <div
+                  id="collapseTwo"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="headingTwo"
+                  data-bs-parent="#accordionExample"
+                >
+                  <div class="accordion-body custom-body">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                      <span class="text-success">Connected</span>
+                      <span>14:14:28</span>
+                    </div>
+                    <div class="d-flex flex-wrap gap-2 mb-2">
+                      <button class="btn btn-status btn-sm">SBO</button>
+                      <button class="btn btn-status btn-sm">PIN</button>
+                      <button class="btn btn-status btn-sm">BF</button>
+                    </div>
+                    <div class="text-center">
+                      <span class="badge bg-secondary">198</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item custom-card mb-2">
+                <h2 class="accordion-header" id="headingOne">
+                  <button
+                    class="accordion-button pt-2 ps-2 pb-1 custom-header"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseOne"
+                    aria-expanded="true"
+                    aria-controls="collapseOne"
+                  >
+                    Orders
+                  </button>
+                </h2>
+                <div
+                  id="collapseOne"
+                  class="accordion-collapse collapse show"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#accordionExample"
+                >
+                  <div class="accordion-body custom-body">
+                    <strong>Clear</strong>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item custom-card mb-2">
+                <h2 class="accordion-header" id="headingThree">
+                  <button
+                    class="accordion-button collapsed pt-1 ps-2 pb-1 custom-header small"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseThree"
+                    aria-expanded="false"
+                    aria-controls="collapseThree"
+                  >
+                    Settings
+                  </button>
+                </h2>
+                <div
+                  id="collapseThree"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="headingThree"
+                >
+                  <div class="accordion-body custom-body p-2 small p-3">
+                    <div class="mb-2">
+                      <label class="form-label text-white custom-label">Default stake</label>
+                      <div class="input-group input-group-sm">
+                        <span class="input-group-text">$</span>
+                        <input type="text" class="form-control" value="0.00" />
+                      </div>
+                    </div>
+
+                    <div class="mb-2">
+                      <label class="form-label text-white custom-label">Right-click stake</label>
+                      <div class="input-group input-group-sm">
+                        <span class="input-group-text">$</span>
+                        <input type="text" class="form-control" value="0.00" />
+                      </div>
+                    </div>
+
+                    <div class="mb-2">
+                      <label class="form-label text-white custom-label">Default order expiry</label>
+                      <input type="text" class="form-control form-control-sm" value="Instant" />
+                    </div>
+
+                    <div class="mb-2">
+                      <label class="form-label text-white custom-label">Max betslip lines</label>
+                      <input type="text" class="form-control form-control-sm" value="9 lines" />
+                    </div>
+
+                    <div class="form-check form-switch mb-1 mt-4">
+                      <input class="form-check-input" type="checkbox" id="inlineBetslip" />
+                      <label class="form-check-label text-white custom-label" for="inlineBetslip">
+                        Inline betslip
+                      </label>
+                    </div>
+
+                    <div class="form-check form-switch mb-1">
+                      <input class="form-check-input" type="checkbox" id="calcValues" checked />
+                      <label class="form-check-label text-white custom-label" for="calcValues">
+                        Show calculated values in betslip
+                      </label>
+                    </div>
+
+                    <div class="form-check form-switch mb-1">
+                      <input class="form-check-input" type="checkbox" id="extraButtons" />
+                      <label class="form-check-label text-white custom-label" for="extraButtons">
+                        Show extra "Place @" buttons
+                      </label>
+                    </div>
+
+                    <div class="form-check form-switch mb-3">
+                      <input class="form-check-input" type="checkbox" id="keepOpen" />
+                      <label class="form-check-label text-white custom-label" for="keepOpen">
+                        Keep betslip open
+                      </label>
+                    </div>
+
+                    <button class="btn betslip_filter btn-sm w-100 text-white">
+                      Betslip filters
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
