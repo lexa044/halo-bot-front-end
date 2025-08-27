@@ -1,15 +1,15 @@
 import { Component, signal } from '@angular/core';
-import { Router, RouterModule, RouterOutlet } from '@angular/router';
-import { AuthService } from './core/services/auth/auth.service';
+import { AuthService } from '../../core/services/auth/auth.service';
+import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, RouterModule],
-  templateUrl: './app.html',
-  styleUrl: './app.scss',
+  selector: 'app-navbar',
+  imports: [CommonModule, RouterModule],
+  templateUrl: './navbar.html',
+  styleUrl: './navbar.scss',
 })
-export class App {
+export class Navbar {
   protected readonly title = signal('halo-bot');
   isAuthenticated = false;
   layoutName = '';

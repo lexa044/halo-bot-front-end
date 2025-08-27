@@ -1,28 +1,40 @@
 import { Routes } from '@angular/router';
-import { SigninComponent } from './pages/auth/signin.component';
+
+import { SigninComponent } from './pages/auth/signin/signin.component';
 import { OrdersComponent } from './pages/orders/orders';
 import { StatementComponent } from './pages/statement/statement';
 import { TradeComponent } from './pages/trade/trade';
-import { AuthGuard } from './core/guards/auth.guard';
 import { FinanceComponent } from './pages/finance/finance';
 import { AnalyticsComponent } from './pages/finance/analytics/analytics';
 import { TransactionsComponent } from './pages/finance/transactions/transactions';
+
+import { AuthGuard } from './core/guards/auth.guard';
 import { RootRedirectGuard } from './core/guards/redirection.guard';
+import { AppShellLayoutComponent } from './layout/app-shell-layout/app-shell-layout';
+import { AUTH_ROUTES } from './pages/auth/auth.routes';
 
 export const routes: Routes = [
-  { path: 'signin', component: SigninComponent },
-  { path: 'trade', component: TradeComponent, canActivate: [AuthGuard] },
-  { path: 'orders', component: OrdersComponent, canActivate: [AuthGuard] },
-  { path: 'statements', component: StatementComponent, canActivate: [AuthGuard] },
+  ...AUTH_ROUTES,
   {
-    path: 'finance',
-    component: FinanceComponent,
+    path: '',
+    component: AppShellLayoutComponent,
     canActivate: [AuthGuard],
     children: [
-      { path: 'transactions', component: TransactionsComponent },
-      { path: 'analytics', component: AnalyticsComponent },
-      { path: '', redirectTo: 'transactions', pathMatch: 'full' },
+      { path: 'trade', component: TradeComponent },
+      { path: 'orders', component: OrdersComponent },
+      { path: 'statements', component: StatementComponent },
+      {
+        path: 'finance',
+        component: FinanceComponent,
+        children: [
+          { path: 'transactions', component: TransactionsComponent },
+          { path: 'analytics', component: AnalyticsComponent },
+          { path: '', redirectTo: 'transactions', pathMatch: 'full' },
+        ],
+      },
     ],
   },
-  { path: '', canActivate: [RootRedirectGuard], component: SigninComponent },
+
+  { path: '', component: SigninComponent, canActivate: [RootRedirectGuard] },
+  { path: '**', redirectTo: 'signin' },
 ];

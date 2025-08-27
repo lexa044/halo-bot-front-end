@@ -1,0 +1,4 @@
+    <app-loader *ngIf="loading$ | async"></app-loader>
+    <app-navbar></app-navbar>
+
+    <router-outlet (activate)="onActivate()"></router-outlet>
