@@ -1,0 +1,36 @@
+<div class="container py-4">
+  <h4 class="text-white mb-4">Security</h4>
+
+  <div class="row g-3">
+    <div class="col-12 col-md-6">
+      <div class="card text-white h-100 shadow-sm rounded-3">
+        <div class="card-body">
+          <h6 class="text-white mb-3">Authorization</h6>
+          <label class="form-label small text-uppercase">Access</label>
+          <input type="text" class="form-control fw-bold" value="Unrestricted" disabled />
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6">
+      <div class="card text-white h-100 shadow-sm rounded-3">
+        <div class="card-body">
+          <h6 class="text-white mb-3">Authentication types</h6>
+          <button class="btn btn-primary w-100 mb-3 auth_btn">Enable two factor authentication</button>
+          <h6 class="text-white mb-3">Registered credentials</h6>
+          <div class="alert alert-warning small mb-3">
+            Please be aware that updates here are instant, meaning when you delete a credential it's
+            deleted — there is no rollback. Removing a device credential will require you to
+            re-enroll the device.
+          </div>
+          <button class="btn btn-primary w-100 auth_btn">Add device</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-4 d-flex flex-wrap gap-2 justify-content-end">
+    <button class="btn save_btn">Save changes</button>
+    <button class="btn btn-outline-light px-4 py-2 fw-bold shadow-sm">Cancel</button>
+  </div>
+</div>

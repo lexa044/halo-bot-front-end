@@ -1,0 +1,37 @@
+.dashboard-wrapper {
+  background: #0d1117;
+  color: #fff;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background: #11161d;
+  border-right: 1px solid #222;
+}
+
+.sidebar ul li {
+  padding: 12px;
+  cursor: pointer;
+}
+
+.sidebar ul li.active {
+  color: #f0a500;
+}
+
+.card {
+  background: #161b22;
+  border: none;
+  color: #fff;
+  border-radius: 8px;
+}
+
+.form-control {
+  background: #0d1117;
+  border: 1px solid #333;
+  color: #fff;
+}
+.save_btn {
+  background-color: #58a6ff;
+  color: white;
+}

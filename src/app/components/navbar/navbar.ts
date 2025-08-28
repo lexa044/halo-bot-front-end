@@ -48,4 +48,8 @@ export class Navbar {
     this.authService.logout();
     this.router.navigate(['/signin']);
   }
+
+  protected goToSettings() {
+    this.router.navigate(['/settings']);
+  }
 }

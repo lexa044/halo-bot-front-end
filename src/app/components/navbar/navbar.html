@@ -32,27 +32,7 @@
         <div class="items dashboar__social">
           <i class="fa-solid fa-circle-half-stroke fa-xl text-white"></i>
           <i class="fa-regular fa-envelope fa-xl text-white"></i>
-          <i class="fa-solid fa-gear fa-xl text-white"></i>
-          <div class="custom-dropdown" (click)="handleClick()">
-            <div class="custom-dropdown__content" [class.is-open]="isOpen">
-              <div class="custom-dropdown__body">
-                <ul class="custom-dropdown__list">
-                  <li>
-                    <a [routerLink]="['/dashboard']" class="custom-dropdown__body-link">
-                      <span class="custom-dropdown__body-icon"> </span>
-                      <span class="custom-dropdown__body-text"> Dashboard </span>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="custom-dropdown__body-link">
-                      <span class="custom-dropdown__body-icon"> </span>
-                      <span class="custom-dropdown__body-text"> Settings </span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
+          <i class="fa-solid fa-gear fa-xl text-white" role="button" (click)="goToSettings()"></i>
         </div>
         <div class="items d__cmn">
           <i

@@ -12,6 +12,7 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { RootRedirectGuard } from './core/guards/redirection.guard';
 import { AppShellLayoutComponent } from './layout/app-shell-layout/app-shell-layout';
 import { AUTH_ROUTES } from './pages/auth/auth.routes';
+import { SettingComponent } from './pages/settings/settings';
 
 export const routes: Routes = [
   ...AUTH_ROUTES,
@@ -23,6 +24,7 @@ export const routes: Routes = [
       { path: 'trade', component: TradeComponent },
       { path: 'orders', component: OrdersComponent },
       { path: 'statements', component: StatementComponent },
+      { path: 'settings', component: SettingComponent },
       {
         path: 'finance',
         component: FinanceComponent,

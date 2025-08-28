@@ -1,0 +1,23 @@
+<div class="dashboard-wrapper d-flex">
+  <div class="sidebar p-3">
+    <ul class="list-unstyled">
+      <li (click)="selectTab('identity')" [class.active]="activeTab === 'identity'">
+        <i class="fa-solid fa-id-card"></i> Identity
+      </li>
+      <li (click)="selectTab('security')" [class.active]="activeTab === 'security'">
+        <i class="fa-solid fa-lock"></i> Security
+      </li>
+      <li (click)="selectTab('trade-settings')" [class.active]="activeTab === 'trade-settings'">
+        <i class="fa-solid fa-sliders"></i> Trade settings
+      </li>
+      <li (click)="selectTab('finance')" [class.active]="activeTab === 'finance'">
+        <i class="fa-solid fa-credit-card"></i> Finance
+      </li>
+    </ul>
+  </div>
+
+  <div class="content flex-grow-1 p-4">
+    <app-identity *ngIf="activeTab === 'identity'"></app-identity>
+    <app-security *ngIf="activeTab === 'security'"></app-security>
+  </div>
+</div>
