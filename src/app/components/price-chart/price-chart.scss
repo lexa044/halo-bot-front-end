@@ -1,0 +1,12 @@
+:host ::ng-deep .p-dialog .p-dialog-header {
+  background: #1f2937 !important; 
+  color: #fff !important;
+  border-radius: 10px 10px 0 0;
+}
+:host ::ng-deep .p-dialog .p-dialog-content {
+  background: #111827 !important;
+  color: #fff;
+}
+:host ::ng-deep .p-dialog {
+  border-radius: 12px;
+}

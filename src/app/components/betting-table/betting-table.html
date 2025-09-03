@@ -1,0 +1,99 @@
+<div class="accordion" id="eventsAccordion">
+  <div class="accordion-item" *ngFor="let ev of events; let i = index">
+    <h2 class="accordion-header" id="heading{{ i }}">
+      <button
+        class="accordion-button d-flex p-2"
+        type="button"
+        data-bs-toggle="collapse"
+        [attr.data-bs-target]="'#collapse' + i"
+        aria-expanded="true"
+        [attr.aria-controls]="'collapse' + i"
+      >
+        <div class="d-flex align-items-center gap-2 min-w-0 flex-grow-1">
+          <img
+            [src]="ev.flag"
+            [alt]="ev.country"
+            class="rounded-circle"
+            style="width: 24px; height: 24px"
+          />
+          <span class="text-capitalize text-muted">{{ ev.sport }}</span>
+          <span class="text-truncate text-dark">{{ ev.country }}</span>
+          <span class="text-truncate fw-semibold">{{ ev.league }}</span>
+          <i class="fa fa-star text-secondary"></i>
+        </div>
+
+        <div class="d-flex me-5">
+          <span
+            class="badge"
+            [ngClass]="{
+              'bg-danger': ev.status === 'LIVE',
+              'bg-primary': ev.status === 'PRE-GAME'
+            }"
+          >
+            {{ ev.status }}
+          </span>
+        </div>
+      </button>
+    </h2>
+
+    <div
+      [id]="'collapse' + i"
+      class="accordion-collapse collapse"
+      [ngClass]="{ show: i === 0 }"
+      [attr.aria-labelledby]="'heading' + i"
+      data-bs-parent="#eventsAccordion"
+    >
+      <div class="accordion-body p-0">
+        <div class="d-flex align-items-center bg-success bg-opacity-10 px-2 py-1">
+          <div class="text-uppercase text-danger fw-bold">Main</div>
+          <div class="d-flex ms-auto text-uppercase text-muted w-75 justify-content-between">
+            <span *ngFor="let market of ev.markets" class="text-center flex-fill">{{
+              market.type
+            }}</span>
+          </div>
+        </div>
+
+        <div class="d-flex flex-column gap-1">
+          <div class="d-flex flex-row bg-white border-start border-5 border-danger px-2 py-1">
+            <div class="d-flex flex-column flex-grow-1">
+              <div class="d-flex justify-content-between">
+                <span>{{ ev.home }}</span>
+                <span class="fw-bold text-danger">{{ ev.scoreHome }}</span>
+              </div>
+              <div class="d-flex justify-content-between">
+                <span>{{ ev.away }}</span>
+                <span class="fw-bold text-danger">{{ ev.scoreAway }}</span>
+              </div>
+              <div class="d-flex align-items-center small text-muted mt-1">
+                <span class="text-danger">{{ ev.time }}</span>
+                <span class="ms-auto">
+                  <i class="fa fa-star text-secondary"></i>
+                </span>
+              </div>
+            </div>
+
+            <div class="d-flex flex-row w-75 justify-content-between text-center">
+              <div *ngFor="let market of ev.markets" class="d-flex flex-column px-1 border-start">
+                <button
+                  *ngFor="let odd of market.odds"
+                  class="btn btn-sm btn-light"
+                  [ngClass]="{ 'text-danger': odd.value < 0 }"
+                  (click)="openModal(market.type)"
+                >
+                  {{ odd.value }}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-bet-modal
+  *ngFor="let slip of betSlips; let i = index"
+  [betType]="slip.betType"
+  [(visible)]="slip.visible"
+  (visibleChange)="closeModal(i)"
+>
+</app-bet-modal>

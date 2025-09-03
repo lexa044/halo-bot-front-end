@@ -1,0 +1,152 @@
+<div class="container py-4">
+  <h4 class="text-white mb-4">Trade settings</h4>
+
+  <div class="row g-4">
+    <div class="col-12 col-lg-4">
+      <div class="card p-3 h-100">
+        <h6 class="mb-3">Table settings</h6>
+
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="fractionalSwitch" />
+          <label class="form-check-label" for="fractionalSwitch"
+            >Use fractional handicap notation</label
+          >
+        </div>
+
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="rightClickTrade" />
+          <label class="form-check-label" for="rightClickTrade"
+            >Right click betting on trade page</label
+          >
+        </div>
+
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="placeOrdersBottom" />
+          <label class="form-check-label" for="placeOrdersBottom">Place orders in bottom</label>
+        </div>
+
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="equivalentLines" />
+          <label class="form-check-label" for="equivalentLines">Show equivalent lines</label>
+        </div>
+
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="handicapAll" />
+          <label class="form-check-label" for="handicapAll">Show handicap on all lines</label>
+        </div>
+
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="onboarding" />
+          <label class="form-check-label" for="onboarding">Enable onboarding on startup</label>
+        </div>
+
+        <div class="mt-3">
+          <label class="form-label">Price format</label>
+          <input type="text" class="form-control" value="US" />
+        </div>
+
+        <div class="mt-3">
+          <label class="form-label">Number of lines to view on trade page</label>
+          <input type="text" class="form-control" value="Mainline only" />
+        </div>
+
+        <label class="form-label mt-3">Exclude bookmakers from trade page if others exist</label>
+        <div class="bookmark_toggle p-3 rounded-2">
+          <div class="form-check form-switch" *ngFor="let bm of bookmakers; let i = index">
+            <input class="form-check-input" type="checkbox" role="switch" [id]="'bm' + i" />
+            <label class="form-check-label" [for]="'bm' + i">{{ bm }}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-4">
+      <div class="card p-3 h-100">
+        <h6 class="mb-3">Betslip settings</h6>
+
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="inlineBetslip" />
+          <label class="form-check-label" for="inlineBetslip">Use inline betslip</label>
+        </div>
+
+        <div class="form-check form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            role="switch"
+            id="betConfirmation"
+            checked
+          />
+          <label class="form-check-label" for="betConfirmation"
+            >Show bet placement confirmation</label
+          >
+        </div>
+
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="minLimit" />
+          <label class="form-check-label" for="minLimit">Show min limit in betslip</label>
+        </div>
+
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="sortDescending" />
+          <label class="form-check-label" for="sortDescending">Sort betslip lines descending</label>
+        </div>
+
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="copySelection" />
+          <label class="form-check-label" for="copySelection">Show copy selection</label>
+        </div>
+
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="closeAfterBet" />
+          <label class="form-check-label" for="closeAfterBet"
+            >Close betslip after placing bet</label
+          >
+        </div>
+
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="rightClickBetslip" />
+          <label class="form-check-label" for="rightClickBetslip"
+            >Right click betting in betslip</label
+          >
+        </div>
+
+        <div class="mt-3">
+          <label class="form-label">Additional betslip lines to open</label>
+          <input type="text" class="form-control" value="None" />
+        </div>
+
+        <div class="mt-3">
+          <label class="form-label">Max lines in betslip</label>
+          <input type="text" class="form-control" value="9 lines" />
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-4">
+      <div class="card p-3 h-100">
+        <h6 class="mb-3">Default inputs</h6>
+
+        <div class="mb-3">
+          <label class="form-label">Default stake</label>
+          <input type="number" class="form-control text-end no-spin" placeholder="0.00" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Right-click bet amount</label>
+          <input type="number" class="form-control text-end no-spin" placeholder="0.00" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Accept lower odds limit</label>
+          <input type="number" class="form-control text-end no-spin" placeholder="0.00" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Lower copy selection odds</label>
+          <input type="number" class="form-control text-end no-spin" placeholder="0.00" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

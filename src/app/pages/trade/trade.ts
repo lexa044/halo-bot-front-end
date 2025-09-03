@@ -9,6 +9,7 @@ import { StickyModalComponent } from '../../components/modal/modal';
 import { BettingDataService } from '../../core/services/betting-data/betting-data.service';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { BettingTableComponent } from '../../components/betting-table/betting-table';
 
 @Component({
   selector: 'app-trade',
@@ -21,6 +22,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
     AccordionModule,
     StickyModalComponent,
     NgxSpinnerModule,
+    BettingTableComponent
   ],
   templateUrl: './trade.html',
   styleUrls: ['./trade.scss'],

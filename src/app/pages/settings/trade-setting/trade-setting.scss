@@ -1,0 +1,37 @@
+.card {
+  background: #161b22;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+}
+
+h6, .form-label, .form-check-label {
+  color: #fff;
+}
+
+.form-control {
+  background: #0f1722;
+  color: #fff;
+  border: 1px solid #2a3b4f;
+}
+
+.no-spin::-webkit-outer-spin-button,
+.no-spin::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.no-spin {
+  -moz-appearance: textfield;
+  text-align: right;
+  direction: ltr;    
+  color: white;   
+}
+
+.no-spin::placeholder {
+  color: white;
+  opacity: 1; 
+}
+.bookmark_toggle{
+  background-color: #2a3b4f;
+}

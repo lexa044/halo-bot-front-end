@@ -1,14 +1,7 @@
-<!-- <ngx-spinner
-  bdColor="rgba(51, 51, 51, 0.8)"
-  size="large"
-  color="#934d4d"
-  type="ball-8bits"
-></ngx-spinner> -->
-
 <section class="dashboard__body mt__30 pb-60">
   <div class="p-3">
     <div class="row g-1">
-      <div class="col-12 col-lg-3 order-2 order-lg-1">
+      <div class="col-12 col-lg-2 order-2 order-lg-1">
         <button
           class="btn text-white d-flex align-items-center gap-2 absolute top-2 end-0 z-30 mb-2"
           (click)="sidebarCollapsed = !sidebarCollapsed"
@@ -20,7 +13,7 @@
           class="dashboard__side__bar relative transition-all duration-300"
           [ngClass]="sidebarCollapsed ? 'invisible' : ''"
         >
-          <div class="overflow-hidden transition-all duration-300 p-3">
+          <div class="overflow-hidden transition-all duration-300 p-1">
             <div
               class="mb-3 d-flex align-items-center"
               [ngClass]="sidebarCollapsed ? 'justify-center' : ''"
@@ -72,18 +65,6 @@
               >
                 <i class="fas fa-bolt text-warning me-2"></i> Highlights
               </h6>
-              <ul class="list-unstyled ps-2 mb-3" *ngIf="!sidebarCollapsed">
-                <ng-container *ngFor="let sport of sports">
-                  <ng-container *ngFor="let league of sport.leagues">
-                    <li *ngIf="league.isHighlighted" class="d-flex align-items-center mb-1">
-                      <i class="far fa-star me-2"></i>
-                      {{ league.name }}
-                      <span class="text-danger ms-1">•</span>
-                    </li>
-                  </ng-container>
-                </ng-container>
-              </ul>
-
               <hr class="border-secondary" *ngIf="!sidebarCollapsed" />
 
               <h6
@@ -103,7 +84,7 @@
         </div>
       </div>
 
-      <div class="col-12 col-lg-6 order-1 order-lg-2">
+      <div class="col-12 col-lg-8 order-1 order-lg-2">
         <div class="dashboard__body__wrap">
           <div class="main__body__wrap left__right__space">
             <div class="live__heightlight">
@@ -156,56 +137,11 @@
                       <sticky-modal> </sticky-modal>
                     </div>
                   </div>
-                  <div class="table__wrap">
-                    <div class="table__items b__bottom">
-                      <div class="t__items">
-                        <div class="t__items__left">
-                          <h6>FK Septemvri Sofia</h6>
-                          <span class="text"> PFC CteSKA Sofia </span>
-                          <p>
-                            <a href="#0"> Live </a>
-                            <span> 2H 45:34 </span>
-                          </p>
-                        </div>
-                      </div>
-                      <div class="cart__point">
-                        <span> 0 </span>
-                        <span> 0 </span>
-                      </div>
-                      <div class="mart__point__items">
-                        <a href="#0" class="twing twing__right">
-                          <i class="icon-twer"></i>
-                        </a>
-                        <a href="#0" class="mart">
-                          <i class="icon-pmart"></i>
-                        </a>
-                        <a href="#0box" class="point__box"> 8.55 </a>
-                        <a href="#0box" class="point__box"> 2.70 </a>
-                        <a href="#0box" class="point__box"> 8.50 </a>
-                      </div>
-                      <div class="cart__point cart__point__two">2,6</div>
-                      <div class="mart__point__two">
-                        <div class="mart__point__left">
-                          <a href="#box" class="point__box"> 8.55 </a>
-                          <a href="#box" class="point__box"> 2.70 </a>
-                        </div>
-                        <div class="mart__point__right">
-                          <a href="#0" class="point__box bg__none">
-                            <i class="icon-lock"></i>
-                          </a>
-                          <a href="#0" class="point__box bg__none">
-                            <i class="icon-star star"></i>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="table__footer">
-                      <a href="#0" class="lobby"> Open Football lobby </a>
-                      <a href="#0" class="footerpoing">
-                        <span>322</span>
-                        <span><i class="fas fa-angle-right"></i></span>
-                      </a>
-                    </div>
+                  <div
+                    class="card mt-3"
+                    style="max-width: 935px; width: 100%"
+                  >
+                    <app-betting-table></app-betting-table>
                   </div>
                 </div>
               </div>
@@ -214,7 +150,7 @@
         </div>
       </div>
 
-      <div class="col-12 col-lg-3 order-3 order-lg-3">
+      <div class="col-12 col-lg-2 order-3 order-lg-3">
         <button
           class="btn text-white d-flex align-items-center gap-2 absolute top-2 end-0 z-30 mb-2"
         >

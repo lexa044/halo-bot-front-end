@@ -1,0 +1,189 @@
+<p-dialog
+  [(visible)]="visible"
+  [modal]="false"
+  [closable]="false"
+  [draggable]="true"
+  [resizable]="false"
+  [style]="{ width: dialogWidth + 'px', 'background-color': '#111827', 'border-radius': '0.5rem' }"
+>
+  <ng-template pTemplate="header" >
+    <div
+      class="d-flex justify-content-between align-items-center w-100 dialog-header pt-3 p-2"
+      *ngIf="data && betType === '1X2'"
+    >
+      <div class="d-flex align-items-center gap-2">
+        <div class="text-center border-end pe-2" style="min-width: 60px">
+          <div class="text-light">{{ data.matchTime }}</div>
+          <div class="fw-bold text-warning">
+            <div>{{ data.homeScore }}</div>
+            <div>{{ data.awayScore }}</div>
+          </div>
+        </div>
+        <div class="d-flex flex-column text-truncate">
+          <div class="d-flex gap-1 text-truncate mb-1">
+            <span class="text-white text-uppercase">{{ data.sport }}</span>
+            <span class="text-white text-truncate">{{ data.country }}</span>
+            <span class="text-white text-truncate">{{ data.league }}</span>
+          </div>
+          <div class="fw-bold text-white text-truncate">{{ data.homeTeam }}</div>
+          <div class="fw-bold text-white text-truncate">{{ data.awayTeam }}</div>
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-sm text-white pe-3" (click)="close()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div
+      class="d-flex justify-content-between align-items-center w-100 dialog-header pt-3 border-bottom pb-3"
+      *ngIf="data && betType === 'HDP'"
+    >
+      <div class="d-flex align-items-center gap-2">
+        <div class="text-center border-end pe-1" style="min-width: 60px">
+          <div class="text-light">1H 19'</div>
+          <div class="fw-bold text-warning">
+            <div>1</div>
+            <div>0</div>
+          </div>
+        </div>
+
+        <div class="d-flex flex-column text-truncate">
+          <div class="d-flex gap-1 text-truncate mb-1">
+            <span class="text-white text-uppercase">Soccer</span>
+            <span class="text-white text-truncate">Belgium</span>
+            <span class="text-white text-truncate">First Division A</span>
+          </div>
+          <div class="fw-bold text-white text-truncate">Royal Charleroi</div>
+          <div class="fw-bold text-white text-truncate">FCV Dender EH</div>
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-sm text-white pe-3" (click)="close()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </ng-template>
+
+  <ng-container>
+    <div *ngIf="data && betType === '1X2'" class="card-body d-flex flex-column p-3">
+      <div class="d-flex justify-content-between align-items-center mb-3 text-danger">
+        <div>
+          <div class="text-uppercase text-white">{{ data.betType }}</div>
+          <div class="text-white">{{ data.betLine }}</div>
+          <div class="text-white text-white">{{ data.betOddsLabel }}</div>
+          <div class="fw-medium text-white">{{ data.betSelection }}</div>
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-secondary btn-sm">
+            <i class="fas fa-share"></i>
+          </button>
+          <button class="btn btn-outline-secondary btn-sm">
+            <i class="fas fa-table"></i>
+          </button>
+          <button class="btn btn-outline-secondary btn-sm" (click)="openPriceChart()">
+            <i class="fas fa-chart-line"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="row g-2 mb-3">
+        <div class="col">
+          <label class="form-label small text-white">Expiry</label>
+          <select class="form-select form-select-sm" [(ngModel)]="data.selectedExpiry">
+            <option *ngFor="let option of data.expiryOptions">{{ option }}</option>
+          </select>
+        </div>
+        <div class="col">
+          <label class="form-label small text-white">Risk stake</label>
+          <div class="input-group input-group-sm">
+            <span class="input-group-text">$</span>
+            <input type="number" class="form-control text-end" [(ngModel)]="data.riskStake" />
+          </div>
+        </div>
+        <div class="col">
+          <label class="form-label small text-white">Odds</label>
+          <input
+            type="number"
+            class="form-control form-control-sm text-end"
+            [(ngModel)]="data.odds"
+          />
+        </div>
+      </div>
+
+      <div class="row g-2 mb-3">
+        <div class="col">
+          <label class="form-label small text-white">Max stake</label>
+          <button class="btn btn-light btn-sm w-100">{{ data.maxStake | number : '1.2-2' }}</button>
+        </div>
+        <div class="col">
+          <label class="form-label small text-white">Max odds</label>
+          <button class="btn btn-light btn-sm w-100">{{ data.maxOdds }}</button>
+        </div>
+        <div class="col">
+          <label class="form-label small text-white">Pot. payout</label>
+          <button class="btn btn-light btn-sm w-100">
+            {{ data.potentialPayout | number : '1.2-2' }}
+          </button>
+        </div>
+        <div class="col">
+          <label class="form-label small text-white">Avg price</label>
+          <button class="btn btn-light btn-sm w-100">{{ data.avgPrice }}</button>
+        </div>
+      </div>
+
+      <div class="mb-3 d-flex justify-content-end">
+        <button class="btn btn-secondary btn-sm" disabled>Place bet</button>
+      </div>
+
+      <div class="table-responsive" style="max-height: 200px; overflow-y: auto">
+        <table class="table table-borderless mb-0">
+          <thead>
+            <tr>
+              <th>BM</th>
+              <th class="text-end">Max</th>
+              <th class="text-end">Odds</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of data.oddsTable">
+              <td>{{ row.bm }}</td>
+              <td class="text-end">{{ row.max | number : '1.2-2' }}</td>
+              <td class="text-end">{{ row.odds }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div *ngIf="betType === 'HDP'" class="d-flex gap-2">
+      <app-dynamic-dialog [(visible)]="visible" (blockCountChange)="onBlockCountChange($event)">
+      </app-dynamic-dialog>
+    </div>
+  </ng-container>
+</p-dialog>
+
+<p-dialog
+  [(visible)]="priceChartVisible"
+  [modal]="true"
+  [closable]="false"
+  [draggable]="true"
+  [resizable]="false"
+  [style]="{ width: '700px', 'background-color': '#111827', 'border-radius': '0.5rem' }"
+>
+  <ng-template pTemplate="header">
+    <div class="p-3">
+      <i class="fas fa-chart-line text-white text-xl"></i>
+      <span class="text-white text-lg font-medium mx-2 flex-1 fs-6">Price Chart</span>
+    </div>
+    <button
+      type="button"
+      class="btn btn-sm text-white"
+      (click)="priceChartVisible = false"
+      style="margin-left: 74%"
+    >
+      <i class="fas fa-times"></i>
+    </button>
+  </ng-template>
+
+  <app-price-chart></app-price-chart>
+</p-dialog>

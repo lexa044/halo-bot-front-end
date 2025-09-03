@@ -1,7 +1,8 @@
-import { League } from "./league";
+import { Country } from "./country";
 
 export interface Sport {
+  id: string;
   name: string;
-  icon: string;  
-  leagues: League[];
+  icon?: string;      
+  countries?: Country[];
 }

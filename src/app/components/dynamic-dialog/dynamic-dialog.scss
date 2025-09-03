@@ -1,0 +1,63 @@
+.form-control,
+.form-select,
+.input-group-text {
+  background: #0d1117;
+  border: 1px solid #333;
+  color: #fff;
+}
+
+.hdp_body {
+  background-color: #111827 !important;
+}
+
+.table {
+  --bs-table-bg: #1a2333 !important;
+  --bs-table-color: white;
+}
+
+.hdp_sidebar {
+  background-color: #111827;
+}
+
+.hdp_sidebar .btn {
+  border-radius: 0 !important;
+  border-bottom: 1px solid #111827;
+}
+
+.dialog-header {
+  background-color: #253550;
+}
+
+.p-dialog .p-dialog-header {
+  background: #0b1220;
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.p-dialog .p-dialog-content {
+  background: #111827;
+  padding: 1rem;
+}
+
+.shared-header {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 2000;
+  border: 1px solid white;
+  border-radius: 0.3rem;
+}
+
+.bets-container {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+.bet-block {
+  flex: 0 0 350px;
+  min-width: 350px;
+  display: flex;
+  flex-direction: column;
+}

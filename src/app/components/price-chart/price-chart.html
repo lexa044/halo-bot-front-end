@@ -1,0 +1,27 @@
+<div class="price-chart p-3">
+
+  <p-table [value]="prices" class="p-datatable-sm text-white">
+    <ng-template pTemplate="header">
+      <tr>
+        <th class="text-left"></th>
+        <th class="text-warning">-24H</th>
+        <th class="text-warning">-8H</th>
+        <th class="text-warning">-1H</th>
+        <th class="text-warning">KO</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-price>
+      <tr>
+        <td class="font-semibold">{{ price.name }}</td>
+        <td>{{ price.h24 }}</td>
+        <td>{{ price.h8 }}</td>
+        <td>{{ price.h1 }}</td>
+        <td>{{ price.ko }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <div class="mt-4">
+    <p-chart type="line" [data]="data" [options]="options" height="400px"></p-chart>
+  </div>
+</div>
